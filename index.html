@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fresh Market | Your Neighborhood Grocery</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+     .loyalty-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .glass-card {
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+      .map-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%; /* 16:9 ratio */
+    position: relative;
+    height: 0;
+  }
+  .map-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+      .product-card img {
+        width: 100%;
+        height: 200px; /* Adjust this value as needed */
+        object-fit: cover;
+    }
+    :root {
+      --primary-color: #4CAF50;
+      --secondary-color: #2196F3;
+      --accent-color: #FF9800;
+      --text-color: #333;
+      --light-text: #ffffff;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #c9f5d9 0%, #a1c4fd 100%);
+      min-height: 100vh;
+      color: var(--text-color);
+      background-attachment: fixed;
+    }
+    /* Glassmorphism effect */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+      padding: 30px;
+      transition: all 0.3s ease;
+    }
+    .glass-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px 0 rgba(31, 38, 135, 0.15);
+    }
+    /* Navbar styling */
+    .navbar {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 15px 0;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+    .nav-link {
+      color: var(--text-color);
+      margin: 0 10px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+      color: var(--primary-color);
+    }
+    .btn-custom {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      border: none;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .btn-custom:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+      transition: all 0.3s ease;
+      z-index: -1;
+    }
+    .btn-custom:hover:before {
+      width: 100%;
+    }
+    .btn-custom:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    /* Hero Section */
+    .hero-section {
+      padding: 120px 0 80px;
+      position: relative;
+    }
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #555;
+    }
+    /* Feature Section */
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+      transition: all 0.3s ease;
+    }
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1);
+      color: var(--secondary-color);
+    }
+    /* Products Section */
+    .product-card {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    .product-card img {
+      transition: all 0.5s ease;
+      border-radius: 10px;
+    }
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+    .product-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(5px);
+      padding: 15px;
+      transform: translateY(100%);
+      transition: all 0.3s ease;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    .product-card:hover .product-info {
+      transform: translateY(0);
+    }
+    /* Testimonials Section */
+    .testimonial-section {
+      position: relative;
+      padding: 80px 0;
+    }
+    .testimonial-card {
+      height: 100%;
+    }
+    .customer-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid var(--primary-color);
+    }
+    .rating {
+      color: #FFD700;
+      margin-bottom: 15px;
+    }
+    /* App Section */
+    .app-section {
+      position: relative;
+      padding: 80px 0;
+    }
+    .app-img {
+      max-width: 80%;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    .store-badge {
+      height: 50px;
+      margin-right: 15px;
+      transition: all 0.3s ease;
+    }
+    .store-badge:hover {
+      transform: translateY(-5px);
+    }
+    /* Contact Section */
+    .contact-section {
+      padding: 80px 0;
+    }
+    .contact-form .form-control {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .contact-form .form-control:focus {
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: none;
+      border-color: var(--primary-color);
+    }
+    .contact-info i {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-right: 15px;
+    }
+    /* Footer Section */
+    footer {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 50px 0 20px;
+      color: white;
+    }
+    .footer-links a {
+      color: #ddd;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
+    .footer-links a:hover {
+      color: var(--primary-color);
+      transform: translateX(5px);
+    }
+    .social-icons a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      color: white;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+    .social-icons a:hover {
+      background: var(--primary-color);
+      transform: translateY(-5px);
+    }
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animated {
+      animation: fadeIn 1s ease forwards;
+    }
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    /* Media Queries for Responsiveness */
+    @media (max-width: 992px) {
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+      .hero-img {
+        margin-top: 50px;
+      }
+    }
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 100px 0 60px;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .glass-card {
+        padding: 20px;
+      }
+      .app-img {
+        margin-bottom: 50px;
+      }
+    }
+    @media (max-width: 576px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      .feature-icon {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Fresh Market</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#app">Our App</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <a href="#products" class="btn btn-custom ms-lg-3">Visit Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 hero-content animated">
+          <h1>Fresh &amp; Healthy Groceries</h1>
+          <p>Your one-stop shop for premium quality fresh produce, pantry essentials, and household products. We’re committed to quality, convenience, and community.</p>
+          <div class="d-flex">
+            <a href="#products" class="btn btn-custom me-3">Explore Products</a>
+            <a href="#contact" class="btn btn-outline-dark">Contact Us</a>
+          </div>
+        </div>
+        <div class="col-lg-6 animated delay-1">
+          <img src="imgs/supermarket.webp" alt="Fresh groceries" class="img-fluid rounded-3">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-5" id="about">
+    <div class="container">
+      <div class="text-center mb-5 animated">
+        <h2 class="fw-bold">Why Choose Us</h2>
+        <p class="text-muted">Experience the difference with our premium services</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4 animated delay-1">
+          <div class="glass-card h-100 text-center feature-card">
+            <i class="fas fa-leaf feature-icon"></i>
+            <h4 class="mb-3">Fresh &amp; Organic</h4>
+            <p class="text-muted">We source directly from local farmers to ensure the freshest produce reaches your table within 24 hours of harvest.</p>
+          </div>
+        </div>
+        <div class="col-md-4 animated delay-2">
+          <div class="glass-card h-100 text-center feature-card">
+            <i class="fas fa-store feature-icon"></i>
+            <h4 class="mb-3">Convenient Pickup</h4>
+            <p class="text-muted">Order online via whatsapp and pick up your items directly from our store, ensuring a quick, safe, and hassle-free experience.</p>
+          </div>
+        </div>
+        <div class="col-md-4 animated delay-3">
+          <div class="glass-card h-100 text-center feature-card">
+            <i class="fas fa-undo feature-icon"></i>
+            <h4 class="mb-3">Easy Returns</h4>
+            <p class="text-muted">Not satisfied with your purchase? Our hassle-free return policy ensures you get the quality you deserve.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Products Section -->
+  <section class="py-5" id="products">
+    <div class="container">
+      <div class="text-center mb-5 animated">
+        <h2 class="fw-bold">Our Popular Products</h2>
+        <p class="text-muted">Discover the best-selling items that keep our customers coming back</p>
+      </div>
+      
+<div class="row g-4">
+    <div class="col-md-6 col-lg-3 animated delay-1">
+      <div class="product-card">
+        <img src="imgs/Snack&Beverages.jpeg" alt="Snacks & Beverages" class="img-fluid">
+        <div class="product-info">
+          <h5 class="mb-1">Snacks & Beverages</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3 animated delay-1">
+      <div class="product-card">
+        <img src="imgs/Staples&Essentials.jpg" alt="Staples & Essentials" class="img-fluid">
+        <div class="product-info">
+          <h5 class="mb-1">Staples & Essentials</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3 animated delay-2">
+      <div class="product-card">
+        <img src="imgs/images.jpeg" alt="Personal & Home Care" class="img-fluid">
+        <div class="product-info">
+          <h5 class="mb-1">Personal & Home Care</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3 animated delay-2">
+      <div class="product-card">
+        <img src="imgs/download.jpeg" alt="Instant & Packaged Foods" class="img-fluid">
+        <div class="product-info">
+          <h5 class="mb-1">Instant & Packaged Foods</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+      <div class="text-center mt-5 animated delay-3">
+        <div class="btn btn-custom">Visit Store Now</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonial-section" id="testimonials">
+    <div class="container">
+      <div class="text-center mb-5 animated">
+        <h2 class="fw-bold">What Our Customers Say</h2>
+        <p class="text-muted">Real reviews from our satisfied customers</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4 animated delay-1">
+          <div class="glass-card testimonial-card h-100">
+            <div class="text-center">
+              <img src="imgs/profile.jpeg" alt="Customer 1" class="customer-img">
+              <h5>Sarah Johnson</h5>
+              <p class="text-muted">Regular Customer</p>
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p>"I've been shopping at Fresh Market for over a year now, and the quality of their produce has always been exceptional. Their delivery service is prompt and reliable."</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 animated delay-2">
+          <div class="glass-card testimonial-card h-100">
+            <div class="text-center">
+              <img src="imgs/profile.jpeg" alt="Customer 2" class="customer-img">
+              <h5>David Martinez</h5>
+              <p class="text-muted">New Customer</p>
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <p>"I recently switched to Fresh Market and I'm impressed with their range of organic products. The mobile app makes ordering so convenient, and their prices are competitive."</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 animated delay-3">
+          <div class="glass-card testimonial-card h-100">
+            <div class="text-center">
+              <img src="imgs/profile.jpeg" alt="Customer 3" class="customer-img">
+              <h5>Emily Chen</h5>
+              <p class="text-muted">Loyal Customer</p>
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p>"The customer service at Fresh Market is unmatched. I had an issue with an order once, and they resolved it immediately. Their weekly specials offer great value!"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- App Section -->
+  <section class="loyalty-section" id="loyalty">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 animated">
+          <img src="imgs/LoyalCustomer.jpeg" alt="Loyalty Program" class="loyalty-img">
+        </div>
+        <div class="col-lg-6 animated delay-1">
+          <div class="glass-card">
+            <h2 class="fw-bold mb-4">Join Our Loyalty Program</h2>
+            <p class="mb-4">
+              Get rewarded for shopping with us! Earn points on every purchase and enjoy exclusive discounts, special offers, and early access to new products.
+            </p>
+            <div class="mb-4">
+              <div class="d-flex align-items-center mb-3">
+                <i class="fas fa-check-circle text-success me-3"></i>
+                <p class="mb-0">Earn points with every purchase</p>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i class="fas fa-check-circle text-success me-3"></i>
+                <p class="mb-0">Exclusive discounts and offers</p>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i class="fas fa-check-circle text-success me-3"></i>
+                <p class="mb-0">Early access to new products</p>
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="fas fa-check-circle text-success me-3"></i>
+                <p class="mb-0">Personalized rewards tailored for you</p>
+              </div>
+            </div>
+            <a href="#join-loyalty" class="btn btn-custom">Join Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+
+  <!-- Contact Section -->
+  <section class="contact-section py-5" id="contact">
+    <div class="container">
+      <div class="text-center mb-5 animated">
+        <h2 class="fw-bold">Get In Touch</h2>
+        <p class="text-muted">We'd love to hear from you</p>
+      </div>
+      <div class="row g-4">
+        <!-- Contact Information Column -->
+        <div class="col-lg-6 animated delay-2">
+          <div class="glass-card h-100 p-4">
+            <h4 class="mb-4">Contact Information</h4>
+            <div class="d-flex align-items-center mb-4 contact-info">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="ms-3">
+                <h5 class="mb-0">Visit Us</h5>
+                <p class="mb-0">VIJAY STORE, Pillayar Kovil St, Kalathur, Tamil Nadu 632531</p>
+              </div>
+            </div>
+            <div class="d-flex align-items-center mb-4 contact-info">
+              <i class="fas fa-phone-alt"></i>
+              <div class="ms-3">
+                <h5 class="mb-0">Call Us</h5>
+                <p class="mb-0">+91 9944919850</p>
+              </div>
+            </div>
+            <div class="d-flex align-items-center mb-4 contact-info">
+              <i class="fas fa-envelope"></i>
+              <div class="ms-3">
+                <h5 class="mb-0">Email Us</h5>
+                <p class="mb-0">vijaystore53@gmail.com</p>
+              </div>
+            </div>
+            <div class="d-flex align-items-center contact-info">
+              <i class="fas fa-clock"></i>
+              <div class="ms-3">
+                <h5 class="mb-0">Opening Hours</h5>
+                <p class="mb-0">Mon-Sat: 6:00 AM - 8:30 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Map Column -->
+        <div class="col-lg-6 animated delay-2">
+          <div class="glass-card h-100 p-4">
+            <div class="map-responsive">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.2271927771435!2d79.53370827990949!3d12.870278655040025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52cf4aa2a52245%3A0xdca53bca67d4c9d1!2sVIJAY%20STORE!5e1!3m2!1sen!2sin!4v1743619635148!5m2!1sen!2sin" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 mb-4">
+          <h4 class="text-white mb-4">Fresh Market</h4>
+          <p class="text-white-50 mb-4">Your neighborhood grocery store committed to providing fresh, quality products at affordable prices. We support local farmers and sustainable practices.</p>
+         <!--  <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div> -->
+        </div>
+        <div class="col-md-4 col-lg-2 mb-4">
+          <h5 class="text-white mb-4">Quick Links</h5>
+          <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#products">Products</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-2 mb-4">
+          <h5 class="text-white mb-4">Categories</h5>
+          <div class="footer-links">
+            <a href="#">Fruits & Vegetables</a>
+            <a href="#">Dairy & Eggs</a>
+            <a href="#">Meat & Seafood</a>
+            <a href="#">Bakery</a>
+            <a href="#">Beverages</a>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-4 mb-4">
+          <h5 class="text-white mb-4">Subscribe to Our Newsletter</h5>
+          <p class="text-white-50 mb-3">Get weekly updates on new products and exclusive offers!</p>
+          <div class="d-flex">
+            <input type="email" class="form-control" placeholder="Your Email">
+            <button class="btn btn-custom ms-2">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <hr class="mt-4 mb-4" style="border-color: rgba(255, 255, 255, 0.1);" />
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="text-white-50 mb-0">&copy; 2025 vijaystore53. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
