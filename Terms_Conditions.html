@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions - Vijay Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f97316;
+            --accent: #10b981;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --border: #e2e8f0;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+        
+        .container:hover {
+            transform: translateY(-5px);
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -70px;
+            right: -70px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            animation: pulse 5s infinite ease-in-out;
+            animation-delay: 1s;
+        }
+        
+        .logo {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+            animation: bounce 2s infinite;
+        }
+        
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .effective-date {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .intro {
+            background: #f1f5f9;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        
+        .intro.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .policy-section {
+            margin-bottom: 40px;
+            position: relative;
+            padding-left: 40px;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.6s ease;
+        }
+        
+        .policy-section.appear {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .section-icon {
+            position: absolute;
+            left: -1rem;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+        }
+        
+        .policy-section:hover .section-icon {
+            transform: scale(1.1);
+            background: var(--secondary);
+        }
+        
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            padding-top: 8px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .policy-section:hover .section-title::after {
+            width: 100%;
+        }
+        
+        .policy-content {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .policy-section:hover .policy-content {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .policy-item {
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .policy-item:hover {
+            color: var(--primary-dark);
+        }
+        
+        .policy-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.5rem;
+            top: -5px;
+            transition: color 0.3s ease;
+        }
+        
+        .policy-item:hover::before {
+            color: var(--secondary);
+        }
+        
+        .highlight {
+            background: #eff6ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 3px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .highlight:hover {
+            background: #dbeafe;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .points-system {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .point-card {
+            flex: 1;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .point-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .point-valid {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .point-invalid {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+        
+        .refund-steps {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .step {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            border-radius: 12px;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            background: white;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover .step-icon {
+            color: var(--secondary);
+            transform: scale(1.1);
+        }
+        
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+        
+        .contact-card {
+            background: linear-gradient(to right, #e0f2fe, #dbeafe);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid #bfdbfe;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .contact-method {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-method:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .contact-icon:hover {
+            background: var(--secondary);
+            transform: rotate(5deg) scale(1.1);
+        }
+        
+        .contact-detail {
+            margin-top: 5px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-detail:hover {
+            color: var(--primary);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: var(--dark);
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .refund-steps, .points-system, .contact-methods {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            header {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .policy-section {
+                padding-left: 0;
+            }
+            
+            .section-icon {
+                position: relative;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-store"></i>
+            </div>
+            <h1>Terms & Conditions</h1>
+            <p class="subtitle">By shopping at Vijay Store or interacting with us via WhatsApp, you agree to the following terms.</p>
+            <div class="effective-date">
+                Effective Date: [Insert Date]
+            </div>
+        </header>
+        
+        <div class="content">
+            <div class="intro">
+                Welcome to Vijay Store! These terms and conditions outline the rules and regulations for the use of Vijay Store's services, including in-store purchases and WhatsApp-based communications. By accessing or using our services, you accept these terms in full.
+            </div>
+            
+            <div class="policy-section">
+                <div class="section-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h2 class="section-title">General Shopping Policy</h2>
+                <div class="policy-content">
+                    <div class="policy-item">
+                        All products are sold as-is unless specifically mentioned.
+                    </div>
+                    <div class="policy-item">
+                        Customers must check their bill before leaving the store. No alterations can be made afterward.
+                    </div>
+                    <div class="policy-item">
+                        We reserve the right to change prices and offers without prior notice.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="policy-section">
+                <div class="section-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h2 class="section-title">Loyalty Points Program</h2>
+                <div class="policy-content">
+                    <div class="policy-item">
+                        We offer Loyalty Points to reward regular customers.
+                    </div>
+                    
+                    <div class="highlight">
+                        <i class="fas fa-check-circle"></i> Points are awarded only if the final bill includes 5 or more items.
+                    </div>
+                    
+                    <div class="policy-item">
+                        Points are not transferable or redeemable for cash.
+                    </div>
+                    <div class="policy-item">
+                        Points must be used before their expiry.
+                    </div>
+                    
+                    <div class="points-system">
+                        <div class="point-card point-valid">
+                            <i class="fas fa-check"></i> Eligible for Points
+                            <div>Most products</div>
+                        </div>
+                        <div class="point-card point-invalid">
+                            <i class="fas fa-times"></i> Not Eligible for Points
+                            <div>Cooking oil (any brand)</div>
+                            <div>Rice bags (25kg or above)</div>
+                            <div>Mobile recharges/top-ups</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="policy-section">
+                <div class="section-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h2 class="section-title">WhatsApp Communication & Webhook Info</h2>
+                <div class="policy-content">
+                    <div class="policy-item">
+                        We use the WhatsApp Business API to send real-time updates, offers, and digital receipts.
+                    </div>
+                    <div class="policy-item">
+                        Our system uses a Webhook Callback URL and Verify Token for secured data exchange.
+                    </div>
+                    <div class="policy-item">
+                        All communications are encrypted and follow WhatsApp's official policies.
+                    </div>
+                    <div class="policy-item">
+                        By shopping with us and sharing your WhatsApp number, you agree to receive store-related updates. You can opt-out anytime.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="policy-section">
+                <div class="section-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h2 class="section-title">Refund & Exchange Policy</h2>
+                <div class="policy-content">
+                    <div class="policy-item">
+                        We believe in full customer satisfaction.
+                    </div>
+                    
+                    <div class="highlight">
+                        <i class="fas fa-check-circle"></i> 100% refund or exchange is allowed for any product — as long as it hasn't been used.
+                    </div>
+                    
+                    <div class="policy-item">
+                        If a product is found expired (past its date) at the time of purchase or immediately after, you are entitled to:
+                        <ul style="padding-left: 20px; margin-top: 10px;">
+                            <li>A 100% refund</li>
+                            <li>A replacement from fresh stock if available</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="policy-item">
+                        If the refund or exchange is not processed within 7 days, the customer has full rights to file a complaint.
+                    </div>
+                    
+                    <div class="policy-item">
+                        A Complaint Sheet will be provided on request at the store counter to document the issue and action taken.
+                    </div>
+                    
+                    <div class="refund-steps">
+                        <div class="step">
+                            <div class="step-icon">
+                                <i class="fas fa-undo"></i>
+                            </div>
+                            <div class="step-title">Return Product</div>
+                            <div>Bring unused product with receipt</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="step-title">Within 7 Days</div>
+                            <div>Refund/exchange must be processed</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="step-title">Complaint Sheet</div>
+                            <div>Available at store counter</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="policy-section">
+                <div class="section-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h2 class="section-title">Data Privacy & Security</h2>
+                <div class="policy-content">
+                    <div class="policy-item">
+                        We only collect data needed for billing, loyalty, and service communications.
+                    </div>
+                    <div class="policy-item">
+                        WhatsApp/API messages are secure and never shared with third parties.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="policy-section">
+                <div class="section-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h2 class="section-title">Changes to Terms</h2>
+                <div class="policy-content">
+                    <div class="policy-item">
+                        These terms may be revised as needed. Continued purchases or communication with us implies agreement to the current version.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="policy-section">
+                <div class="section-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h2 class="section-title">Contact Us</h2>
+                <div class="contact-card">
+                    <p>Have a concern or complaint? Reach out to us:</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-icon" onclick="window.location.href='tel:+919944919850';">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>Phone</div>
+                            <div class="contact-detail" onclick="window.location.href='tel:+919944919850';">+91 9944919850</div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon" onclick="window.location.href='https://maps.google.com/?q=VIJAY STORE, Pillayar Kovil St, Kalathur, Tamil Nadu 632531';">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>Visit Us</div>
+                            <div class="contact-detail" onclick="window.location.href='https://maps.google.com/?q=VIJAY STORE, Pillayar Kovil St, Kalathur, Tamil Nadu 632531';">VIJAY STORE, Pillayar Kovil St, Kalathur, Tamil Nadu 632531</div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon" onclick="window.location.href='mailto:vijaystore53@gmail.com';">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>Email Us</div>
+                            <div class="contact-detail" onclick="window.location.href='mailto:vijaystore53@gmail.com';">vijaystore53@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            &copy; 2023 Vijay Store. All rights reserved.
+        </footer>
+    </div>
+
+    <script>
+        // Initialize particles.js background
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#2563eb" },
+                shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+                opacity: { value: 0.1, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: "#93c5fd", opacity: 0.1, width: 1 },
+                move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true }
+            },
+            retina_detect: true
+        });
+        
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const intro = document.querySelector('.intro');
+            const sections = document.querySelectorAll('.policy-section');
+            const backToTop = document.querySelector('.back-to-top');
+            
+            // Initial fade-in for intro
+            setTimeout(() => {
+                intro.classList.add('appear');
+            }, 300);
+            
+            // Intersection Observer for section animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Back to top button
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+            
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Make contact details clickable
+            document.querySelectorAll('.contact-detail').forEach(item => {
+                item.style.cursor = 'pointer';
+            });
+        });
+    </script>
+</body>
+</html>
